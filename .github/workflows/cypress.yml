@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: 🧪 Run Cypress tests
-        run: npm run test_all
+        run: npx cypress run
 
       - name: 📤 Upload Cypress Reports (HTML)
         if: always()
