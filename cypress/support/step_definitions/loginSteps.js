@@ -6,9 +6,9 @@ Given("I open the login page", () => {
 });
 
 When("I enter email {string} and password {string}", (username, password) => {
-  LoginPage.fillUsername(username);
-  LoginPage.fillPassword(password);
-  LoginPage.submit();
+  LoginPage.champUsername(username);
+  LoginPage.champPassword(password);
+  LoginPage.boutonConnexion();
 });
 
 Then("I should be redirected to the dashboard", () => {
