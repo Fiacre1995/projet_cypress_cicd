@@ -3,10 +3,13 @@ const LoginPage = require('../../pages/LoginPage');
 const DashboardPage = require('../../pages/DashboardPage');
 const PimPage = require('../../pages/PimPage');
 
-Given("je me connecte avec un compte valide : {string} et {string}", (username, password) => {
-  LoginPage.visit();
-  LoginPage.login(username, password);
-  DashboardPage.verifierMot("Dashboard");
+Given("je me connecte avec un compte valide {string}", (userType) => {
+  cy.fixture("user").then((users) => {
+    const user = users[userType];
+    LoginPage.visit();
+    LoginPage.login(user.username, user.password);
+    DashboardPage.verifierMot("Dashboard");
+  });
 });
 
 When("J'accede à la page PIM", () => {
@@ -14,17 +17,23 @@ When("J'accede à la page PIM", () => {
   DashboardPage.verifierMot("PIM");
 });
 
-When("je remplir le formulaire et je valide : {string} et {string}", (prenom, nom) => {
-  cy.get('.orangehrm-header-container > .oxd-button').click();
-  PimPage.creerEmployeur(prenom, nom)
+When("je remplir le formulaire remplir et je valide", () => {
+   cy.fixture("employe").then((data) => {
+    cy.get('.orangehrm-header-container > .oxd-button').click();
+    PimPage.creerEmployeur(data.firstName, data.lastName, data.username, data.password, data.password);
+  
+  });
 });
 
-When("je remplir le formulaire et je valide", () => {
+When("je valide un formulaire vide", () => {
   cy.get('.orangehrm-header-container > .oxd-button').click();
   PimPage.boutonSave();
-  //cy.get('.--name-grouped-field > :nth-child(1) > .oxd-text').should("be.visible").and("contain", "Required");
 });
 
 Then("je suis rediriger vers la page Information Employe", () => {
-  cy.url().should("include", "/viewPersonalDetails");
+  cy.url({ timeout: 10000 }).should("include", "/viewPersonalDetails");
+});
+
+Then("je reste sur la page du formulaire avec des messages d'erreur", () => {
+  cy.url({ timeout: 10000 }).should("include", "/addEmployee");
 });

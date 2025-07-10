@@ -1,21 +1,21 @@
 Feature: Creer Employeur
 
   Scenario Outline: Creation avec succes
-    Given je me connecte avec un compte valide : "<username>" et "<password>"
+    Given je me connecte avec un compte valide "<userType>"
     When J'accede à la page PIM
-    And je remplir le formulaire et je valide : "<prenom>" et "<nom>"
+    And je remplir le formulaire remplir et je valide
     Then je suis rediriger vers la page Information Employe
 
     Examples:
-      | username | password | prenom     | nom     |
-      | Admin    | admin123 | testPrenom | testNom |
+      | userType     |
+      | validUser    | 
 
-  Scenario Outline: Creation avec KO
-    Given je me connecte avec un compte valide : "<username>" et "<password>"
+  Scenario Outline: Creation avec tous les champs vides
+    Given je me connecte avec un compte valide "<userType>"
     When J'accede à la page PIM
-    And je remplir le formulaire et je valide
-    #Then I should be redirected to the dashboard
+    And je valide un formulaire vide
+    Then je reste sur la page du formulaire avec des messages d'erreur 
 
-    Examples:
-      | username | password | 
-      | Admin    | admin123 | 
+   Examples:
+      | userType     |
+      | validUser    | 
