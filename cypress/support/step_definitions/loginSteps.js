@@ -16,7 +16,6 @@ When("je rentre des identifiants valident", () => {
 When("I enter user {string}", (userType) => {
   cy.fixture("user").then((users) => {
     const user = users[userType];
-    //expect(user, `Utilisateur ${userType} non défini`).to.exist;
     LoginPage.champUsername(user.username);
     LoginPage.champPassword(user.password);
     LoginPage.boutonConnexion();
