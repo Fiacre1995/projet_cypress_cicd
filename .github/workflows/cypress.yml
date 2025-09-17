@@ -46,9 +46,10 @@ jobs:
             -X POST \
             --data "{\"client_id\": \"${{ secrets.XRAY_CLIENT_ID }}\", \"client_secret\": \"${{ secrets.XRAY_CLIENT_SECRET }}\"}" \
             https://xray.cloud.getxray.app/api/v2/authenticate | tr -d '"')
-
-          echo "Upload du rapport fusionné vers Xray..."
-          curl -s -H "Content-Type: application/json" \
+          
+          echo "Upload du rapport JUnit vers Xray..."
+          curl -s -H "Content-Type: text/xml" \
             -H "Authorization: Bearer $AUTH" \
-            --data @"cypress/reports/junit-results.xml" \
-            https://xray.cloud.getxray.app/api/v2/import/execution/cucumber
+            -X POST \
+            --data-binary @"cypress/reports/junit-results.xml" \
+            "https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey=${{ secrets.XRAY_PROJECT_KEY }}"
