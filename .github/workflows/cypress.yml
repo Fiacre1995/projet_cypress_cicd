@@ -32,8 +32,11 @@ jobs:
           name: mochawesome-report
           path: cypress/reports
 
-      #- name: 📂 Fusionner les rapports JSON
-        #run: npm run merge-reports
+      - name: 📂 Fusionner les rapports JSON
+        run: npm run merge-reports
+
+      - name: 📂 Convertir en Junit
+        run: npm run convert-to-junit
 
       - name: 📡 Upload results to Xray (Cloud)
         if: always() # même si les tests échouent, on envoie le rapport
@@ -47,5 +50,5 @@ jobs:
           echo "Upload du rapport fusionné vers Xray..."
           curl -s -H "Content-Type: application/json" \
             -H "Authorization: Bearer $AUTH" \
-            --data @"cypress/reports/cucumber-report.json" \
+            --data @"cypress/reports/junit-results.xml" \
             https://xray.cloud.getxray.app/api/v2/import/execution/cucumber

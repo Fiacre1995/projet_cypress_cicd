@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Cypress Cucumber Tests" tests="7" failures="0" errors="0" skipped="0" time="37.599">
+  <testsuite name="Login" tests="4" failures="0" errors="0" skipped="0" time="12.171" timestamp="2025-09-17T14:43:13.445Z">
+    <testcase classname="Login" name="Successful login with different users (example #1)" time="3.597">
+      <properties>
+        <property name="test.uuid" value="4462490f-4da9-47da-87df-818af6b8148d"/>
+      </properties>
+    </testcase>
+    <testcase classname="Login" name="Failed login with invalid credentials (example #1)" time="2.794">
+      <properties>
+        <property name="test.uuid" value="fa4a111c-c1d0-423b-9ff0-6062e2172157"/>
+      </properties>
+    </testcase>
+    <testcase classname="Login" name="Failed login with invalid credentials (example #2)" time="2.916">
+      <properties>
+        <property name="test.uuid" value="01c3984b-3c25-4d2b-a5d7-82338181c65b"/>
+      </properties>
+    </testcase>
+    <testcase classname="Login" name="Failed login with invalid credentials (example #3)" time="2.864">
+      <properties>
+        <property name="test.uuid" value="c78ea1b5-e88c-4702-95fa-af1089479bcf"/>
+      </properties>
+    </testcase>
+  </testsuite>
+  <testsuite name="Creer Employeur" tests="1" failures="0" errors="0" skipped="0" time="5.007" timestamp="2025-09-17T14:43:13.445Z">
+    <testcase classname="Creer Employeur" name="Creation avec succes (example #1)" time="5.007">
+      <properties>
+        <property name="test.uuid" value="a73f7d5b-432a-42bc-811a-1349ddffc6d5"/>
+      </properties>
+    </testcase>
+  </testsuite>
+  <testsuite name="Creer Employeur" tests="2" failures="0" errors="0" skipped="0" time="15.959" timestamp="2025-09-17T14:43:13.445Z">
+    <testcase classname="Creer Employeur" name="Creation avec succes (example #1)" time="9.910">
+      <properties>
+        <property name="test.uuid" value="09354b21-2315-4aa8-92b9-24beaeeeeb88"/>
+      </properties>
+    </testcase>
+    <testcase classname="Creer Employeur" name="Creation avec tous les champs vides (example #1)" time="6.049">
+      <properties>
+        <property name="test.uuid" value="858752da-5dc3-4847-9a60-94f8e3c4b00b"/>
+      </properties>
+    </testcase>
+  </testsuite>
+</testsuites>
