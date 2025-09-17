@@ -9,7 +9,10 @@ When("J'accede à la page PIM Mockée", () => {
   cy.intercept(
       'GET',
       'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/pim/employees?limit=50&offset=0&model=detailed&includeEmployees=onlyCurrent&sortField=employee.firstName&sortOrder=ASC',
-      { fixture: 'mock.json' }
+      { 
+        statusCode: 200,
+        fixture: 'mock.json' 
+      }
     ).as('getEmployees');
 
   cy.get(':nth-child(2) > .oxd-main-menu-item').click();

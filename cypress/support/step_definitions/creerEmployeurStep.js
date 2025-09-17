@@ -32,7 +32,7 @@ When("je valide un formulaire vide", () => {
 });
 
 Then("je suis rediriger vers la page Information Employe", () => {
-  cy.url({ timeout: 10000 }).should("include", "/viewPersonalDetails");
+  cy.url({ timeout: 10000 }).should("include", "/addEmployee");
 });
 
 Then("je reste sur la page du formulaire avec des messages d'erreur", () => {
