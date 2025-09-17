@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "firstName": "Alice",
+      "lastName": "Dupont",
+      "jobTitle": "QA Engineer"
+    },
+    {
+      "id": "2",
+      "firstName": "Marc",
+      "lastName": "Durand",
+      "jobTitle": "Développeur"
+    }
+  ],
+  "meta": {
+    "total": 2
+  }
+}
