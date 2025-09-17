@@ -13,7 +13,9 @@
     "test:firefox": "cypress run --browser firefox",
     "test:edge": "cypress run --browser edge",
     "test_all": "npm run clean:reports && npm run test:chrome && npm run test:firefox && npm run test:edge",
-    "test_all_parallel": "concurrently \"npm run test:chrome\" \"npm run test:firefox\" \"npm run test:edge\""
+    "test_all_parallel": "concurrently \"npm run test:chrome\" \"npm run test:firefox\" \"npm run test:edge\"",
+    "merge-reports": "npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/cucumber-report.json"
+
   },
   "keywords": [],
   "author": "",

@@ -32,17 +32,20 @@ jobs:
           name: mochawesome-report
           path: cypress/reports
 
+      - name: 📂 Fusionner les rapports JSON
+        run: npm run merge-reports
+
       - name: 📡 Upload results to Xray (Cloud)
         if: always() # même si les tests échouent, on envoie le rapport
         run: |
-          echo "Authenticating to Xray..."
+          echo "Authentification auprès de Xray..."
           AUTH=$(curl -s -H "Content-Type: application/json" \
             -X POST \
             --data "{\"client_id\": \"${{ secrets.XRAY_CLIENT_ID }}\", \"client_secret\": \"${{ secrets.XRAY_CLIENT_SECRET }}\"}" \
             https://xray.cloud.getxray.app/api/v2/authenticate | tr -d '"')
 
-          echo "Uploading report to Xray..."
+          echo "Upload du rapport fusionné vers Xray..."
           curl -s -H "Content-Type: application/json" \
             -H "Authorization: Bearer $AUTH" \
-            --data @"cypress/reports/mochawesome/*.json" \
+            --data @"cypress/reports/cucumber-report.json" \
             https://xray.cloud.getxray.app/api/v2/import/execution/cucumber
