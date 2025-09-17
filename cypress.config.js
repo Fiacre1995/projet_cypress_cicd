@@ -37,5 +37,10 @@ module.exports = defineConfig({
     json: true,
   },
 
+  reporter: 'cucumber-json-formatter',
+  reporterOptions: {
+    output: 'cypress/reports/cucumber-report.json'
+  }
+
   },
 });

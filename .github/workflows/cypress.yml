@@ -32,8 +32,8 @@ jobs:
           name: mochawesome-report
           path: cypress/reports
 
-      - name: 📂 Fusionner les rapports JSON
-        run: npm run merge-reports
+      #- name: 📂 Fusionner les rapports JSON
+        #run: npm run merge-reports
 
       - name: 📡 Upload results to Xray (Cloud)
         if: always() # même si les tests échouent, on envoie le rapport
