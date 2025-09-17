@@ -4,7 +4,7 @@ const DashboardPage = require('../../pages/DashboardPage');
 const PimPage = require('../../pages/PimPage');
 
 Given("je me connecte avec un compte valide {string}", (userType) => {
-  cy.generateEmployeurFixture();      // Permet de charger le fichier employe.json par Faker
+  cy.generateEmployeurFixture();      // Permet de faire à la commande personnalisé se trouvant dans command.js
   cy.fixture("user").then((users) => {
     const user = users[userType];
     LoginPage.visit();
